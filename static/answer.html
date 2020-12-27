@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link href="../static/css/answer.css" rel="stylesheet" />
+    <title>登录-某乎</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button
+            type="button"
+            class="navbar-toggle collapsed"
+            data-toggle="collapse"
+            data-target="#navbar"
+            aria-expanded="false"
+            aria-controls="navbar"
+          >
+            <span class="sr-only"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/index">某乎</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="/index">首页</a></li>
+          </ul>
+          <ul class="nav navbar-nav">
+            <li><a href="/put_question_page">提问</a></li>
+          </ul>
+        </div>
+        <!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+
+      <div id="answers" v-cloak>
+        <div class="blog-header">
+          <h1 class="blog-title"> {{ header.title }} </h1>
+          <p class="lead blog-description"> {{ header.content }} </p>
+        </div>
+        <div class="row">
+
+          <div class="col-sm-8 blog-main">
+            <div>
+              <div v-for="item in items" class="blog-post">
+                  <p class="blog-post-meta">by {{ item.user_name }} </p>
+                  <p> {{ item.content }} </p>
+              </div>
+            </div>
+
+            <nav>
+              <ul class="pager">
+                <li><button type="button" v-on:click="previous_page">Previous</button></li>
+                <li><button type="button" v-on:click="next_page">Next</button></li>
+              </ul>
+            </nav>
+
+            <textarea class="form-control" rows="6" v-model="message"></textarea>
+            <nav>
+              <ul class="pager">
+                <li><button type="button" v-on:click="submit">submit</button></li>
+              </ul>
+            </nav>
+
+
+          </div><!-- /.blog-main -->
+
+          <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+            <div class="sidebar-module sidebar-module-inset">
+              <h4> Welcome {{ user_name }} </h4>
+              <p> 今天日期为 {{ date.getFullYear() + '-' + date.getMonth() + '-' + date.getDay() }} </p>
+            </div>
+            <div class="sidebar-module">
+              <h4>浏览记录</h4>
+              <ol class="list-unstyled">
+                <li><a href="#">December {{ date.getFullYear() }}</a></li>
+                <li><a href="#">November {{ date.getFullYear() }}</a></li>
+                <li><a href="#">October {{ date.getFullYear() }}</a></li>
+                <li><a href="#">September {{ date.getFullYear() }}</a></li>
+                <li><a href="#">August {{ date.getFullYear() }}</a></li>
+                <li><a href="#">July {{ date.getFullYear() }}</a></li>
+                <li><a href="#">June {{ date.getFullYear() }}</a></li>
+                <li><a href="#">May {{ date.getFullYear() }}</a></li>
+                <li><a href="#">April {{ date.getFullYear() }}</a></li>
+                <li><a href="#">March {{ date.getFullYear() }}</a></li>
+                <li><a href="#">February {{ date.getFullYear() }}</a></li>
+                <li><a href="#">January {{ date.getFullYear() }}</a></li>
+              </ol>
+            </div>
+          </div><!-- /.blog-sidebar -->
+
+        </div><!-- /.row -->
+      </div>
+
+    </div><!-- /.container -->
+    <!-- /.container -->
+
+    <!-- Vue -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+    <!-- 通过 axios 使用Ajax请求  -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <script src="../static/js/answer.js"></script>
+  </body>
+</html>
